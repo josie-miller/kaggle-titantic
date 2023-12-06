@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Nov 30 19:12:29 2023
-
+Sex, Pclass, Age, Fare, Embarked, is_alone, 
 @author: josephinemiller
 """
 
@@ -59,7 +59,7 @@ print(df.isnull().sum())
 df = df.dropna()
 
 df.replace([np.inf, -np.inf], np.nan, inplace=True)
-
+#NOTE THIS
 df['Embarked'] = df['Embarked'].replace({'S': 0, 'C': 1, 'Q': 2})
 
 column_types = df.dtypes

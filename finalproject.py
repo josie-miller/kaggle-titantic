@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Nov 30 19:12:29 2023
-Sex, Pclass, Age, Fare, Embarked, is_alone, 
+Sex, Pclass, Age, Fare, Embarked, is_alone, name_title
 X = df['Sex]
 @author: josephinemiller
 

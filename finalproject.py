@@ -38,14 +38,12 @@ print(df['family_size'])
 df['is_alone'] = (df['family_size'] == 1).astype('int')
 print(df['is_alone'])
 
-df['name_title'] = df['Name'].str.replace('.* ([A-Z][a-z]+)\..*', "\\1", regex=True)
-print((df['name_title']))
+#df['name_title'] = df['Name'].str.replace('.* ([A-Z][a-z]+)\..*', "\\1", regex=True)
+#print((df['name_title']))
 
 # Calculate the 50th percentile (median) of the 'Age' column
 fill_age = np.percentile(df['Age'].dropna(), 50.0)
 
-# For some numpy versions, the np.percentile method may return nan
-# As a failsafe, in those cases fill with the mean
 if np.isnan(fill_age):
     fill_age = df['Age'].mean()
 
@@ -54,9 +52,12 @@ df['Age'] = df['Age'].fillna(value=fill_age)
 
 df = df.drop('Cabin', axis=1)
 df = df.drop('Name', axis=1)
-df = df.drop('name_title', axis=1)
+#df = df.drop('name_title', axis=1)
 
+print(df.isnull().sum())
+# Ticket has 4 N/A, Embarked has 2. They are dropped below.
 df = df.dropna()
+
 df.replace([np.inf, -np.inf], np.nan, inplace=True)
 
 df['Embarked'] = df['Embarked'].replace({'S': 0, 'C': 1, 'Q': 2})

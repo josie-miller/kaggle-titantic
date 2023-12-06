@@ -3,7 +3,21 @@
 """
 Created on Thu Nov 30 19:12:29 2023
 Sex, Pclass, Age, Fare, Embarked, is_alone, 
+X = df['Sex]
 @author: josephinemiller
+
+df['name_title'] = df['Name'].str.replace('.* ([A-Z][a-z]+)\..*', "\\1", regex=True)
+print((df['name_title']))
+
+df['name_title'] = df['name_title'].replace(['Countess','Capt', 'Col','Don', 'Major', 'Sir', 'Jonkheer', 'Dona'], 'Rare')
+df['name_title'] = df['name_title'].replace('Mlle', 'Miss')
+df['name_title'] = df['name_title'].replace('Ms', 'Miss')
+df['name_title'] = df['name_title'].replace('Mme', 'Mrs')
+
+df['name_title'] = df['name_title'].map({"Mr": 1, "Miss": 2, "Mrs": 3, "Master": 4, "Lady": 5, "Dr": 6, "Rev": 7, "Rare": 8})
+df['name_title'] = df['name_title'].fillna(0)
+
+
 """
 
 import pandas as pd
